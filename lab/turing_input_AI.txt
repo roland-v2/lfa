@@ -1,0 +1,53 @@
+[states]
+q_start S
+q_scan_right 0
+q_check_left_0 0
+q_check_left_1 0
+q_scan_left 0
+q_back_start 0
+q_accept F
+q_reject F
+
+[sigma]
+0
+1
+X
+Y
+$
+_
+
+[rules]
+# Start: scan for first unmarked symbol
+q_start 0 q_check_left_0 X R
+q_start 1 q_check_left_1 Y R
+q_start X q_start X R
+q_start Y q_start Y R
+q_start $ q_accept $ R
+
+# After marking 0, move right to $
+q_check_left_0 0 q_check_left_0 0 R
+q_check_left_0 1 q_check_left_0 1 R
+q_check_left_0 X q_check_left_0 X R
+q_check_left_0 Y q_check_left_0 Y R
+q_check_left_0 $ q_scan_left $ L
+
+# After marking 1, move right to $
+q_check_left_1 0 q_check_left_1 0 R
+q_check_left_1 1 q_check_left_1 1 R
+q_check_left_1 X q_check_left_1 X R
+q_check_left_1 Y q_check_left_1 Y R
+q_check_left_1 $ q_scan_left $ L
+
+# Now scan left to find matching unmarked symbol
+q_scan_left X q_scan_left X L
+q_scan_left Y q_scan_left Y L
+q_scan_left 0 q_back_start X L
+q_scan_left 1 q_back_start Y L
+q_scan_left $ q_accept $ R
+
+# After marking last, return to start
+q_back_start 0 q_back_start 0 L
+q_back_start 1 q_back_start 1 L
+q_back_start X q_back_start X L
+q_back_start Y q_back_start Y L
+q_back_start _ q_start _ R

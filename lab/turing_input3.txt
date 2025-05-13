@@ -1,0 +1,59 @@
+# Pp ca inputul este format din 0 si 1, si sfarsitul input-ului este marcat cu $
+# Spatiul pt video memory este delimitat de 'v'
+# Crescator
+[states]
+q0 S 
+q1 0
+q2 0
+q3 0
+q4 0
+q5 0
+q6 0
+q7 0
+q8 0
+q9 0
+q10 0
+
+[sigma]
+0
+1
+$
+v
+_
+
+[rules]
+q0 0 q0 0 R
+q0 1 q0 1 R
+q0 $ q1 $ L
+q1 0 q2 _ R
+q1 1 q3 _ R
+q1 _ q1 _ L
+q2 _ q2 _ R
+q2 $ q2 $ R
+q2 v q4 v R
+q4 _ q4 _ R 
+q4 v q5 v L 
+q4 0 q5 0 L 
+q4 1 q5 1 L
+q5 _ q6 0 L 
+q5 v q10 v L
+q6 _ q6 _ L 
+q6 v q6 v L 
+q6 $ q1 $ L
+q3 _ q3 _ R 
+q3 $ q3 $ R
+q3 v q7 v R 
+q7 _ q7 _ R
+q7 v q8 v L 
+q7 0 q8 0 L 
+q7 1 q8 1 L
+q8 _ q9 1 L 
+q8 v q10 v L
+q9 _ q9 _ L
+q9 v q9 v L 
+q9 $ q1 $ L
+q10 _ q10 _ L 
+q10 $ q10 $ L 
+q10 1 q10 1 L 
+q10 0 q10 0 L
+q10 v q10 v L

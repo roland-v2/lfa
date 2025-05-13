@@ -1,0 +1,51 @@
+# Pp ca inputul este format din 0 si 1, si sfarsitul input-ului este marcat cu $
+# Spatiul pt video memory este delimitat de 'v'
+# Descrectator
+[states]
+q0 S 
+q1 0
+q2 0
+q3 0
+q4 0
+q5 0
+q6 0
+q7 0
+
+[sigma]
+0
+1
+$
+v
+_
+
+[rules]
+q0 0 q0 0 R
+q0 1 q0 1 R
+q0 $ q1 $ L
+q1 0 q2 _ R
+q1 1 q3 _ R
+q1 _ q1 _ L
+q2 _ q2 _ R
+q2 $ q2 $ R
+q2 v q4 v R
+q4 0 q4 0 R 
+q4 1 q4 1 R 
+q4 _ q5 0 L
+q4 v q7 v L 
+q7 0 q7 0 L
+q7 1 q7 1 L
+q7 v q7 v L
+q7 _ q7 _ L
+q7 $ q7 $ L
+q5 0 q5 0 L
+q5 1 q5 1 L 
+q5 v q5 v L
+q5 _ q5 _ L
+q5 $ q1 $ L
+q3 _ q3 _ R
+q3 $ q3 $ R
+q3 v q6 v R
+q6 0 q6 0 R 
+q6 1 q6 1 R 
+q6 _ q5 1 L 
+q6 v q7 v L

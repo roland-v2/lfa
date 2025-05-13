@@ -1,0 +1,74 @@
+[states]
+entrance S
+hallway 0
+kitchen 0
+secret_room 0
+library 0
+entrance_ 0
+hallway_ 0
+kitchen_ 0
+secret_room_ 0
+library_ 0
+exit_ F
+
+
+[sigma]
+up
+down
+left
+right
+pick
+drop
+
+[rules]
+entrance up hallway
+entrance down entrance
+entrance left entrance
+entrance right entrance
+entrance_ up hallway_
+entrance_ down entrance_
+entrance_ left entrance_
+entrance_ right entrance_
+entrance_ drop entrance_
+hallway up secret_room
+hallway down entrance
+hallway left kitchen
+hallway right library
+hallway_ up secret_room_
+hallway_ down entrance_
+hallway_ left kitchen_
+hallway_ right library_
+hallway_ drop hallway_
+kitchen up kitchen
+kitchen down kitchen
+kitchen left kitchen
+kitchen right hallway
+kitchen pick kitchen_
+kitchen_ up kitchen_
+kitchen_ down kitchen_
+kitchen_ left kitchen_
+kitchen_ right hallway_
+kitchen_ drop kitchen
+secret_room up secret_room
+secret_room down hallway
+secret_room left secret_room
+secret_room right secret_room
+secret_room_ up secret_room_
+secret_room_ down hallway_
+secret_room_ left secret_room_
+secret_room_ right secret_room_
+secret_room_ drop secret_room_
+library up library
+library down library
+library left hallway
+library right library
+library_ up library_
+library_ down exit_
+library_ left hallway_
+library_ right library_
+library_ drop library_
+exit_ up library_
+exit_ down exit_
+exit_ left exit_
+exit_ right exit_
+exit_ drop exit_

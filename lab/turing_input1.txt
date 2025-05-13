@@ -1,0 +1,12 @@
+[states]
+q0 S
+q1 0
+
+[sigma]
+$
+&
+_
+
+[rules]
+q0 _ q1 $ R
+q1 _ q0 & R

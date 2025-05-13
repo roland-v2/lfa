@@ -1,0 +1,39 @@
+[states]
+entrance S
+hallway 0
+kitchen 0
+secret_room 0
+library 0
+exit F
+
+[sigma]
+up
+down
+left
+right
+
+[rules]
+entrance up hallway
+entrance down entrance
+entrance left entrance
+entrance right entrance
+hallway up secret_room
+hallway down entrance
+hallway left kitchen
+hallway right library
+kitchen up kitchen
+kitchen down kitchen
+kitchen left kitchen
+kitchen right hallway
+secret_room up secret_room
+secret_room down hallway
+secret_room left secret_room
+secret_room right secret_room
+library up library
+library down exit
+library left hallway
+library right library
+exit up library
+exit down exit
+exit left exit
+exit right exit

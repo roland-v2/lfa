@@ -106,7 +106,7 @@ def is_valid_input(ls, dc):
 def get_section(auto, section):
     return auto[section]
 
-auto = load_auto("turing_input4.txt")
+auto = load_auto("lfa/lab/turing_input_AI_Gemini3.txt")
 states = auto['states']
 sigma = auto['sigma']
 rules = auto['rules']

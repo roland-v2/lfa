@@ -1,0 +1,67 @@
+[states]
+s_start S
+s_find_v_c0
+s_find_v_c1
+s_past_v_find_gap_c0
+s_past_v_find_gap_c1
+s_return_find_prime_c0
+s_return_find_prime_c1
+s_unmark_move_next
+s_done F
+
+[sigma]
+0
+1
+_
+v
+0'
+1'
+
+[rules]
+s_start 0 s_find_v_c0 0' R
+s_start 1 s_find_v_c1 1' R
+s_start _ s_done _ R
+s_start v s_done v R
+s_start 0' s_start 0' R
+s_start 1' s_start 1' R
+
+s_find_v_c0 0 s_find_v_c0 0 R
+s_find_v_c0 1 s_find_v_c0 1 R
+s_find_v_c0 _ s_find_v_c0 _ R
+s_find_v_c0 0' s_find_v_c0 0' R
+s_find_v_c0 1' s_find_v_c0 1' R
+s_find_v_c0 v s_past_v_find_gap_c0 v R
+
+s_find_v_c1 0 s_find_v_c1 0 R
+s_find_v_c1 1 s_find_v_c1 1 R
+s_find_v_c1 _ s_find_v_c1 _ R
+s_find_v_c1 0' s_find_v_c1 0' R
+s_find_v_c1 1' s_find_v_c1 1' R
+s_find_v_c1 v s_past_v_find_gap_c1 v R
+
+s_past_v_find_gap_c0 0 s_past_v_find_gap_c0 0 R
+s_past_v_find_gap_c0 1 s_past_v_find_gap_c0 1 R
+s_past_v_find_gap_c0 v s_past_v_find_gap_c0 v R
+s_past_v_find_gap_c0 _ s_return_find_prime_c0 0 L
+
+s_past_v_find_gap_c1 0 s_past_v_find_gap_c1 0 R
+s_past_v_find_gap_c1 1 s_past_v_find_gap_c1 1 R
+s_past_v_find_gap_c1 v s_past_v_find_gap_c1 v R
+s_past_v_find_gap_c1 _ s_return_find_prime_c1 1 L
+
+s_return_find_prime_c0 0 s_return_find_prime_c0 0 L
+s_return_find_prime_c0 1 s_return_find_prime_c0 1 L
+s_return_find_prime_c0 _ s_return_find_prime_c0 _ L
+s_return_find_prime_c0 v s_return_find_prime_c0 v L
+s_return_find_prime_c0 1' s_return_find_prime_c0 1' L
+s_return_find_prime_c0 0' s_unmark_move_next 0' R
+
+s_return_find_prime_c1 0 s_return_find_prime_c1 0 L
+s_return_find_prime_c1 1 s_return_find_prime_c1 1 L
+s_return_find_prime_c1 _ s_return_find_prime_c1 _ L
+s_return_find_prime_c1 v s_return_find_prime_c1 v L
+s_return_find_prime_c1 0' s_return_find_prime_c1 0' L
+s_return_find_prime_c1 1' s_unmark_move_next 1' R
+
+s_unmark_move_next 0' s_start 0 R
+s_unmark_move_next 1' s_start 1 R
